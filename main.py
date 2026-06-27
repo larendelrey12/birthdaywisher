@@ -30,16 +30,16 @@ with open("Letter.txt", "r", encoding="utf-8") as f:
     dic_letters = dict(zip(new_names, letters))
     print(dic_letters)
 
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
-my_email = "EMAIL"
-psw = "PASSWORD"
 with smtplib.SMTP('smtp.gmail.com', 587) as connection:
     connection.starttls() # this encrypts the email in case it is intercepted
-    connection.login(my_email, psw)
+    connection.login(MY_EMAIL, MY_PASSWORD)
     for n in dic_letters:
         email = birthday_people.query("name == @n")["email"].item()
         msg = MIMEText(f"{dic_letters[n]}", "plain", "utf-8")
         msg["Subject"] = "Birthday"
-        msg["From"] = my_email
+        msg["From"] = MY_EMAIL
         msg["To"] = email
         connection.sendmail(msg["From"], msg["To"], msg.as_string())
