@@ -31,10 +31,6 @@ with open("Letter.txt", "r", encoding="utf-8") as f:
     print(dic_letters)
 
 
-
-
-
-# 4. Send the letter generated in step 3 to that person's email address.
 my_email = "EMAIL"
 psw = "PASSWORD"
 with smtplib.SMTP('smtp.gmail.com', 587) as connection:
