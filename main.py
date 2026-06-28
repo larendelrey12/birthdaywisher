@@ -2,6 +2,7 @@ import datetime as dt
 import pandas
 import smtplib
 from email.mime.text import MIMEText
+import os
 
 
 today = dt.datetime.now()
